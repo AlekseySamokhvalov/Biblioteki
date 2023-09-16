@@ -3,16 +3,24 @@ package com.example.varietyOfImplementations;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class EmployeeService {
-    private static final int MaxSize = 2;
-    private final Map<String, Employee> employees = new HashMap<>();
+    private static final int MaxSize = 10;
+    public Map<String, Employee> employees = new HashMap<>();
 
-    public Employee add(String firstName, String lastName){
+    public EmployeeService(){
+        this.employees = new HashMap<>();
+        add("Иван", "Иванович", 1, 50000.0);
+        add("Петр", "Петрович", 2, 68000.0);
+        add("Сидор", "Сидорович", 3, 45000.0);
+        add("Алексей", "Алексеевич", 1, 50000.0);
+        add("Виктор","Викторович", 2, 60000.0);
+        add("Иван", "Алексеевич", 3, 65000.0);
+    }
+
+    public  Employee add(String firstName, String lastName, int department, double salary){
 
         if (employees.size()>MaxSize){
             throw new EmployeeStorageIsFullException("Нет места для добавления сотрудника.");
@@ -23,7 +31,7 @@ public class EmployeeService {
             throw new EmployeeAlreadyAddedException("Данный сотрудник уже существует.");
         }
 
-        Employee newEmployee = new Employee(firstName, lastName);
+        Employee newEmployee = new Employee(firstName, lastName, department, salary);
         employees.put(key, newEmployee);
         return newEmployee;
     }
@@ -53,6 +61,9 @@ public class EmployeeService {
     public Collection<Employee> getAll(){
         return employees.values();
 
+    }
+    public Collection<Employee> findAll(){
+        return Collections.unmodifiableCollection(employees.values());
     }
     private String getKey(String firstName, String lastName) {
         return firstName + lastName;

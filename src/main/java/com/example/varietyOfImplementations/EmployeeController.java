@@ -21,17 +21,17 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
     @GetMapping(path = "/add")
-    public Employee add(@RequestParam String firstName, @RequestParam String lastName){ // throws EmployeeAlreadyAddedException, EmployeeStorageIsFullException {
-        return employeeService.add(firstName,lastName);
+    public Employee add(@RequestParam String firstName, @RequestParam String lastName, @RequestParam int department, @RequestParam double salary){ // throws EmployeeAlreadyAddedException, EmployeeStorageIsFullException {
+        return employeeService.add(firstName,lastName, department, salary);
 
     }
     @GetMapping(path = "/remove")
-    public Employee remove(@RequestParam String firstName, @RequestParam String lastName){ //} throws EmployeeNotFoundException {
+    public Employee remove(@RequestParam String firstName, @RequestParam String lastName){
         return employeeService.remove(firstName,lastName);
     }
 
     @GetMapping(path = "/find")
-    public Employee find(@RequestParam String firstName, @RequestParam String lastName){ //} throws EmployeeNotFoundException {
+    public Employee find(@RequestParam String firstName, @RequestParam String lastName){
         return employeeService.find(firstName,lastName);
     }
 
