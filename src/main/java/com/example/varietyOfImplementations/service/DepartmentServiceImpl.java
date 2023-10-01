@@ -1,7 +1,7 @@
 package com.example.varietyOfImplementations.service;
 
 import com.example.varietyOfImplementations.Employee;
-import com.example.varietyOfImplementations.EmployeeNotFoundException;
+import com.example.varietyOfImplementations.exception.EmployeeNotFoundException;
 import com.example.varietyOfImplementations.EmployeeService;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.*;
 
 @Service
 public class DepartmentServiceImpl implements  DepartmentService{
