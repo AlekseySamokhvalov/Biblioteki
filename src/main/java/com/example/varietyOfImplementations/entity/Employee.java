@@ -55,8 +55,9 @@ public class Employee {
         return Objects.hash(getFirstName(), getLastName());
     }
     public String fullNames(){ return firstName + " " + lastName; }
-    @Override
+ /*   @Override
     public String toString() {
         return "Сотрудник[ФИО: " + fullNames() + ", Отдел: " + department + ", З/П: " + salary + "]";
     }
+    */
 }
