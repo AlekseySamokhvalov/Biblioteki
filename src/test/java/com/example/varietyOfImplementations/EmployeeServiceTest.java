@@ -160,21 +160,19 @@ public class EmployeeServiceTest {
         Integer departmentId = FIRST_DEPARTMENT_ID;
         Integer lastdepartmentId = SECOND_DEPARTMENT_ID;
         Employee firstEmployee = getEmployee();
-        Employee secondEmployee = getEmployee3();
-        Employee lastEmployee = getEmployee2();
-
+        Employee secondEmployee = getEmployee2();
+        Employee lastEmployee = getEmployee3();
 
         //подготовка ожидаемого результата
         //List<Employee> expectedEmployee = List.of(firstEmployee,secondEmployee,lastEmployee);
         List<Employee> expectedEmployee = getAllEmployee();
 
         //начало теста
-
         employeeService.add(firstName, lastName,departmentId, salaryEmployee);
-        employeeService.add(firstName3, lastName3, lastdepartmentId, salaryEmployee3);
         employeeService.add(firstName2, lastName2, departmentId, salaryEmployee2);
+        employeeService.add(firstName3, lastName3, lastdepartmentId, salaryEmployee3);
 
-        Collection<Employee> actualEmployee = employeeService.getAll();
+        List<Employee> actualEmployee = employeeService.getAll();
 //        assertEquals(expectedEmployee.stream().sorted(),actualEmployee.stream().sorted());
         assertEquals(expectedEmployee, actualEmployee);
     }

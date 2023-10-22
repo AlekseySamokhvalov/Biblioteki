@@ -13,7 +13,7 @@ import java.util.*;
 
 @Service
 public class EmployeeService {
-    private static final int MAX_SIZE = 4;
+    private static final int MAX_SIZE = 3;
     public Map<String, Employee> employees = new HashMap<>();
 /*
     public EmployeeService(){
@@ -84,9 +84,8 @@ public class EmployeeService {
         return employees.get(key);
 
     }
-    public Collection<Employee> getAll(){
-        return employees.values();
-
+    public List<Employee> getAll() {
+        return new ArrayList<>(employees.values());
     }
     public Collection<Employee> findAll(){
         return Collections.unmodifiableCollection(employees.values());
