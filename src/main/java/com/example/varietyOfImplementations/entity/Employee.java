@@ -1,4 +1,4 @@
-package com.example.varietyOfImplementations;
+package com.example.varietyOfImplementations.entity;
 
 import java.util.Objects;
 

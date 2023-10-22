@@ -1,8 +1,7 @@
 package com.example.varietyOfImplementations.service;
 
-import com.example.varietyOfImplementations.Employee;
+import com.example.varietyOfImplementations.entity.Employee;
 import com.example.varietyOfImplementations.exception.EmployeeNotFoundException;
-import com.example.varietyOfImplementations.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

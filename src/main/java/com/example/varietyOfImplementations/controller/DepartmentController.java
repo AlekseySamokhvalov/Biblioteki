@@ -1,6 +1,6 @@
 package com.example.varietyOfImplementations.controller;
 
-import com.example.varietyOfImplementations.Employee;
+import com.example.varietyOfImplementations.entity.Employee;
 import com.example.varietyOfImplementations.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/departments")
+@RequestMapping("/department")
 public class DepartmentController {
 
     private final DepartmentService departmentService;
@@ -31,12 +31,12 @@ public class DepartmentController {
         return departmentService.getEmployeeWithMinSalary(departmentId);
     }
 
-    @GetMapping(value = "/all", params = {"departmentId"})
+    @GetMapping(value = "/employees", params = {"departmentId"})
     public Collection<Employee> getEmployees(@RequestParam Integer departmentId){
         return departmentService.getEmployees(departmentId);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/employees")
     public Map<Integer, List<Employee>> getEmployees(){
         return departmentService.getEmployees();
     }
