@@ -17,24 +17,31 @@ public class EmployeeGenerator {
     public static final String FIRST_NAME_3 = "АлексейВторой";
     public static final String LAST_NAME_3 = "СамохваловВторой";
     public static final double SALARY_3 = 137000;
+    public static final String FIRST_NAME_4 = "АлексейТретий";
+    public static final String LAST_NAME_4 = "СамохваловТретий";
+    public static final double SALARY_4 = 237000;
 
     public static final int FIRST_DEPARTMENT_ID = 1;
 
     public static final int SECOND_DEPARTMENT_ID = 2;
+    public static final int THIRD_DEPARTMENT_ID = 3;
 
     public static Employee getEmployee() {
         return new Employee(FIRST_NAME, LAST_NAME, FIRST_DEPARTMENT_ID, SALARY);
     }
 
     public static Employee getEmployee2() {
-        return new Employee(FIRST_NAME_2, LAST_NAME_2, FIRST_DEPARTMENT_ID, SALARY_2);
+        return new Employee(FIRST_NAME_2, LAST_NAME_2, SECOND_DEPARTMENT_ID, SALARY_2);
     }
 
     public static Employee getEmployee3() {
-        return new Employee(FIRST_NAME_3, LAST_NAME_3, SECOND_DEPARTMENT_ID, SALARY_3);
+        return new Employee(FIRST_NAME_3, LAST_NAME_3, THIRD_DEPARTMENT_ID, SALARY_3);
+    }
+    public static Employee getEmployee4() {
+        return new Employee(FIRST_NAME_4, LAST_NAME_4, THIRD_DEPARTMENT_ID, SALARY_4);
     }
 
     public static List<Employee> getAllEmployee() {
-        return Arrays.asList(getEmployee(), getEmployee2(), getEmployee3());
+        return Arrays.asList(getEmployee(), getEmployee2(), getEmployee3(), getEmployee4());
     }
 }

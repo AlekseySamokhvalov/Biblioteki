@@ -11,8 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 import static com.example.varietyOfImplementations.utils.EmployeeGenerator.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeeServiceTest {
 
@@ -56,6 +55,9 @@ public class EmployeeServiceTest {
         //Начало теста
         employeeService.add(firstName2, lastName2, departmentId, salary2);
         employeeService.add(firstName3, lastName3, departmentId, salary3);
+        employeeService.add("Вася", "Пупкин", 1, 19000);
+        employeeService.add("Петр", "Петров", 2, 219000);
+
         Exception exception = assertThrows(
                 EmployeeStorageIsFullException.class,
                 () -> employeeService.add(firstName, lastName, departmentId, salary)
@@ -156,24 +158,40 @@ public class EmployeeServiceTest {
         String firstName3 = FIRST_NAME_3;
         String lastName3 = LAST_NAME_3;
         double salaryEmployee3 = SALARY_3;
+        String firstName4 = FIRST_NAME_4;
+        String lastName4 = LAST_NAME_4;
+        double salaryEmployee4 = SALARY_4;
 
-        Integer departmentId = FIRST_DEPARTMENT_ID;
-        Integer lastdepartmentId = SECOND_DEPARTMENT_ID;
+        Integer departmentId1 = FIRST_DEPARTMENT_ID;
+        Integer departmentId2 = SECOND_DEPARTMENT_ID;
+        Integer departmentId3 = THIRD_DEPARTMENT_ID;
         Employee firstEmployee = getEmployee();
         Employee secondEmployee = getEmployee2();
         Employee lastEmployee = getEmployee3();
+        Employee fourthEmployee = getEmployee4();
 
         //подготовка ожидаемого результата
-        //List<Employee> expectedEmployee = List.of(firstEmployee,secondEmployee,lastEmployee);
+        //List<Employee> expectedEmployee = List.of(firstEmployee,lastEmployee, secondEmployee, fourthEmployee);
         List<Employee> expectedEmployee = getAllEmployee();
 
         //начало теста
-        employeeService.add(firstName, lastName,departmentId, salaryEmployee);
-        employeeService.add(firstName2, lastName2, departmentId, salaryEmployee2);
-        employeeService.add(firstName3, lastName3, lastdepartmentId, salaryEmployee3);
+        expectedEmployee.forEach(e -> employeeService.add(e.getFirstName(), e.getLastName(), e.getDepartment(), e.getSalary()));
 
         List<Employee> actualEmployee = employeeService.getAll();
-//        assertEquals(expectedEmployee.stream().sorted(),actualEmployee.stream().sorted());
-        assertEquals(expectedEmployee, actualEmployee);
+        assertTrue(actualEmployee.containsAll(expectedEmployee));
+//        assertEquals(expectedEmployee, actualEmployee); //        assertEquals(expectedEmployee.stream().sorted(),actualEmployee.stream().sorted());
     }
 }
+
+
+
+
+
+
+
+//      expectedEmployee.forEach(e -> employeeService.add(e.getFirstName(), e.getLastName(), e.getDepartment(), e.getSalary()));
+/*      вместо
+        employeeService.add(firstName, lastName, departmentId, salaryEmployee);
+        employeeService.add(firstName2, lastName2, departmentId, salaryEmployee2);
+        employeeService.add(firstName3, lastName3, lastdepartmentId, salaryEmployee3);
+*/

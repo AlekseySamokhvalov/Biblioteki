@@ -13,7 +13,7 @@ import java.util.*;
 
 @Service
 public class EmployeeService {
-    private static final int MAX_SIZE = 3;
+    private static final int MAX_SIZE = 4;
     public Map<String, Employee> employees = new HashMap<>();
 /*
     public EmployeeService(){
