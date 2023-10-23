@@ -1,6 +1,6 @@
 package com.example.varietyOfImplementations.service;
 
-import com.example.varietyOfImplementations.Employee;
+import com.example.varietyOfImplementations.entity.Employee;
 
 import java.util.Collection;
 import java.util.List;

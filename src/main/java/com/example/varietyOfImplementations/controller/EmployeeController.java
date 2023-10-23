@@ -1,11 +1,14 @@
-package com.example.varietyOfImplementations;
+package com.example.varietyOfImplementations.controller;
 
+import com.example.varietyOfImplementations.entity.Employee;
+import com.example.varietyOfImplementations.service.EmployeeService;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/employee")
@@ -36,7 +39,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public Collection<Employee> getAll(){
+    public List<Employee> getAll(){
         return employeeService.getAll();
     }
 

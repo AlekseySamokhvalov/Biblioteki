@@ -1,5 +1,6 @@
-package com.example.varietyOfImplementations;
+package com.example.varietyOfImplementations.service;
 
+import com.example.varietyOfImplementations.entity.Employee;
 import com.example.varietyOfImplementations.exception.EmployeeAlreadyAddedException;
 import com.example.varietyOfImplementations.exception.EmployeeNotFoundException;
 import com.example.varietyOfImplementations.exception.EmployeeStorageIsFullException;
@@ -8,16 +9,13 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 //import SpringUtils.java;
 
-
-
-
 import java.util.*;
 
 @Service
 public class EmployeeService {
-    private static final int MaxSize = 10;
+    private static final int MAX_SIZE = 4;
     public Map<String, Employee> employees = new HashMap<>();
-
+/*
     public EmployeeService(){
         this.employees = new HashMap<>();
         add("Иван", "Иванович", 1, 50000.0);
@@ -27,24 +25,18 @@ public class EmployeeService {
         add("Виктор","Викторович", 2, 60000.0);
         add("Иван", "Алексеевич", 3, 65000.0);
     }
-
+*/
     public  Employee add(String firstName, String lastName, int department, double salary){
 
         // 1)Проверка записи с большой буквы
         firstName = StringUtils.capitalize(firstName);
-//        if(!firstName.equals(firstNameCapitalize)){
-//            firstName = firstNameCapitalize;
-//            //throw new ValidateException("Имя сотрудника должно быть с большой буквы");
-//        }
+
         lastName = StringUtils.capitalize(lastName);
-//        if(!lastName.equals(lastNameCapitalize)){
-//            lastName = lastNameCapitalize;
-//        }
 
         // 2) Проверка на отсутствие запрещёныных символов
         validateFirstAndLastNames(firstName, lastName);
 
-        if (employees.size()>MaxSize){
+        if (employees.size()>=MAX_SIZE){
             throw new EmployeeStorageIsFullException("Нет места для добавления сотрудника.");
         }
         String key = getKey(firstName, lastName);
@@ -92,9 +84,8 @@ public class EmployeeService {
         return employees.get(key);
 
     }
-    public Collection<Employee> getAll(){
-        return employees.values();
-
+    public List<Employee> getAll() {
+        return new ArrayList<>(employees.values());
     }
     public Collection<Employee> findAll(){
         return Collections.unmodifiableCollection(employees.values());
